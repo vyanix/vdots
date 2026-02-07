@@ -24,7 +24,6 @@
             python311Packages.isort
             python311Packages.pylint
             ruff
-            ruff-lsp
           ];
 
           shellHook = ''
