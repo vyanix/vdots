@@ -19,10 +19,9 @@
             python311Packages.virtualenv
             
             # LSP and formatters
-            python311Packages.python-lsp-server
+            pyright
             python311Packages.black
             python311Packages.isort
-            python311Packages.pylint
             ruff
           ];
 
