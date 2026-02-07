@@ -25,6 +25,7 @@
               binutils
               
               clang-tools  # for clangd LSP
+              asm-lsp
               cmake-language-server
               
               bear
@@ -53,6 +54,7 @@
               yasm
               
               clang-tools  # clangd, clang-format, clang-tidy
+              asm-lsp
               cmake-language-server
               
               # Static analysis
@@ -97,6 +99,7 @@
               valgrind
               
               clang-tools
+              asm-lsp
               cmake-language-server
               
               bear
