@@ -14,14 +14,14 @@
       {
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            python311
-            python311Packages.pip
-            python311Packages.virtualenv
+            python312
+            python312Packages.pip
+            python312Packages.virtualenv
             
             # LSP and formatters
             pyright
-            python311Packages.black
-            python311Packages.isort
+            python312Packages.black
+            python312Packages.isort
             ruff
           ];
 
