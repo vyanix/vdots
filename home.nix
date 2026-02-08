@@ -48,5 +48,6 @@
     ripgrep
     unzip
     xclip
+    yazi
   ];
 }
