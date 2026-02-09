@@ -1,0 +1,18 @@
+dots
+====
+This repository contains my personal NixOS configuration and dotfiles.
+The goal is a minimal, reproducible, and developer-focused Linux setup.
+
+System Overview
+===============
+OS: NixOS (flakes-enabled)
+Shell: Bash
+Terminal: kitty
+Window system: X11 (dwm)
+Editor: Neovim
+
+Notes
+=====
+These configs are tailored for my hardware and workflow.
+Use at your own risk.
+Expect breaking changes.
