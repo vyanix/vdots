@@ -21,7 +21,6 @@ static const char col_sel_bg[]      = "#eaffff";
 static const char col_sel_fg[]      = "#000000";
 static const char col_bar_bg[]      = "#eaffff";
 static const char *colors[][3]      = {
-	/*               fg             bg             border   */
 	[SchemeNorm] = { col_fg,        col_bg,        col_border },
 	[SchemeSel]  = { col_sel_fg,    col_sel_bg,    col_border },
 };
