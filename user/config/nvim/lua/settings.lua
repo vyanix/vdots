@@ -1,7 +1,7 @@
 -- OPTIONS
 
 vim.opt.background = "dark"
-vim.cmd("colorscheme monoglow")
+vim.cmd("colorscheme dookie")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
