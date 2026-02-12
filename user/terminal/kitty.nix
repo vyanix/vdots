@@ -9,7 +9,7 @@
       window_padding_width = 2;
 
       font_family = "SpaceMono Nerd Font";
-      font_size = 11;
+      font_size = 10;
       disable_ligatures = "always";
       
       background_opacity = "1.0";
