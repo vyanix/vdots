@@ -6,54 +6,33 @@
     settings = {
       confirm_os_window_close = 0;
       enabled_layouts = "tall,*";
-      window_padding_width = 2;
-
+      window_padding_width = 5;
       font_family = "SpaceMono Nerd Font";
       font_size = 10;
-      disable_ligatures = "always";
-      
-      background_opacity = "1.0";
-      
-      tab_bar_style = "separator";
-      tab_separator = " | ";
-      
-      background = "#ffffea";
-      foreground = "#000000";
-      cursor = "#000000";
-      cursor_text_color = "#ffffea";
-      
-      selection_background = "#eaffff";
-      selection_foreground = "#000000";
-      
-      color0 = "#000000";
-      color1 = "#000000";
-      color2 = "#000000";
-      color3 = "#000000";
-      color4 = "#000000";
-      color5 = "#000000";
-      color6 = "#000000";
-      color7 = "#000000";
-      color8 = "#000000";
-      color9 = "#000000";
-      color10 = "#000000";
-      color11 = "#000000";
-      color12 = "#000000";
-      color13 = "#000000";
-      color14 = "#000000";
-      color15 = "#000000"; 
-
-      active_tab_foreground = "#000000";
-      active_tab_background = "#eaffff";
-      inactive_tab_foreground = "#666666";
-      inactive_tab_background = "#ffffea";
-      
-      active_border_color = "#000000";
-      inactive_border_color = "#999999";
-      
-      enable_audio_bell = false;
-      visual_bell_duration = "0.0";
+      background_opacity = "0.90";
+      tab_bar_style = "powerline";
+      background = "#101010";
+      foreground = "#cccccc";
+      cursor = "#1bfd9c";
+      selection_background = "#282828";
+      selection_foreground = "#dddddd";
+      color0 = "#2a2a2a";
+      color1 = "#deeeed";
+      color2 = "#1bfd9c";
+      color3 = "#b4b4b4";
+      color4 = "#7a7a7a"; 
+      color5 = "#66b2b2";
+      color6 = "#cccccc";
+      color7 = "#f1f1f1";
+      color8  = "#4a4a4a";
+      color9  = "#708090";
+      color10 = "#a6ffc9";
+      color11 = "#dddddd";
+      color12 = "#aaaaaa";
+      color13 = "#49c4c4";
+      color14 = "#d3d3d3";
+      color15 = "#ffffff";
     };
-    
     keybindings = {
       "ctrl+c" = "copy_or_interrupt";
       "ctrl+v" = "paste_from_clipboard";

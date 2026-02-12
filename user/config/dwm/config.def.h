@@ -12,6 +12,8 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "SpaceMono Nerd Font:size=10" };
 static const char dmenufont[]       = "SpaceMono Nerd Font:size=10";
+
+/*
 static const char col_bg[]          = "#ffffea";
 static const char col_fg[]          = "#000000";
 static const char col_border[]      = "#aeeeee";
@@ -23,18 +25,18 @@ static const char *colors[][3]      = {
 	[SchemeNorm] = { col_fg,        col_bg,        col_border },
 	[SchemeSel]  = { col_sel_fg,    col_sel_bg,    col_border },
 };
+*/
 
-/*
 static const char col_bg[]          = "#101010";
 static const char col_fg[]          = "#cccccc";
 static const char col_muted[]       = "#7a7a7a";
 static const char col_border[]      = "#2a2a2a";
 static const char col_accent[]      = "#1bfd9c";
 static const char *colors[][3]      = {
-	[SchemeNorm] = { col_fg,    col_bg,    col_border },
-	[SchemeSel]  = { col_fg,    col_bg,    col_accent },
+	/*               fg             bg             border   */
+	[SchemeNorm] = { col_fg,    col_bg,            col_border },
+	[SchemeSel]  = { col_fg,    col_bg,            col_accent },
 };
-*/
 
 /* tagging */
 static const char *tags[] = { "", "󱡶" };
@@ -77,8 +79,8 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-/*static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_border, "-sf", col_accent, NULL };*/
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_sel_bg, "-sf", col_sel_fg, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_border, "-sf", col_accent, NULL };
+/* static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_sel_bg, "-sf", col_sel_fg, NULL }; */
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
 static const char *br_up[] = { "brightnessctl", "set", "+5%", NULL };

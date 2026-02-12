@@ -1,7 +1,7 @@
 -- OPTIONS
 
 vim.opt.background = "dark"
-vim.cmd("colorscheme dookie")
+vim.cmd("colorscheme monoglow")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.cursorline = true
@@ -316,7 +316,7 @@ end
 vim.keymap.set('n', '<leader>bd', smart_close_buffer, { desc = 'Smart close buffer/tab' })
 
 -- STATUSLINE
-
+--[[
 local colors = {
     normal  = { fg = '#000000', bg = '#eaffff', bold = true },
     insert  = { fg = '#000000', bg = '#ffffea', bold = true },
@@ -326,8 +326,8 @@ local colors = {
     string  = { fg = '#000000', bg = '#f5f5dc' },
     extra   = { fg = '#000000', bg = '#f5f5dc' },
 }
+]]
 
---[[
 local colors = {
     normal  = { fg = '#ffffff', bg = '#080808', bold = true },
     insert  = { fg = '#1d2021', bg = '#1bfd9c', bold = true },
@@ -337,7 +337,6 @@ local colors = {
     string  = { fg = '#ffffff', bg = '#191919' },
     extra   = { fg = '#ffffff', bg = '#191919' },
 }
-]]
 
 local function set_highlights()
     vim.api.nvim_set_hl(0, 'StatusLineNormal', colors.normal)
