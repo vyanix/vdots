@@ -25,7 +25,7 @@
           owner = "pebeto";
           repo = "dookie.nvim";
           rev = "main";
-          sha256 = pkgs.lib.fakeSha256;
+          hash = "sha256-+yr7A6fkOccZiRD/TCxzbiTZHbYyk0J/INPLAHSK2lc=";
         };
       })
       direnv-vim
