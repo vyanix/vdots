@@ -8,6 +8,7 @@
     ./user/terminal/fastfetch.nix
     ./user/editors/neovim/neovim.nix
     ./user/suckless/suckless.nix
+    ./user/compositor/picom.nix
   ];
   home.username = "vyanix";
   home.homeDirectory = "/home/vyanix";
