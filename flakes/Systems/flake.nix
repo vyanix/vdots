@@ -1,5 +1,5 @@
 {
-  description = "Systems development environments";
+  description = "Systems development environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -12,109 +12,36 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        devShells = {
-          # GCC-based GNU toolchain
-          default = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              gcc
-              gdb
-              gnumake
-              cmake
-              nasm
-              valgrind
-              binutils
-              
-              clang-tools  # for clangd LSP
-              asm-lsp
-              cmake-language-server
-              
-              bear
-              cppcheck
-              glibc.dev
-            ];
+        devShells.default = pkgs.mkShell {
+          packages = with pkgs; [
+            gcc
+            gdb
+            gnumake
 
-            shellHook = ''
-              echo "=== GCC GNU Toolchain ==="
-              echo "GCC: $(gcc --version | head -n1)"
-              echo "GDB: $(gdb --version | head -n1)"
-              echo "clangd available for LSP"
-            '';
-          };
+            llvmPackages.clang
+            llvmPackages.bintools
+            llvmPackages.openmp
 
-          # LLVM/Clang toolchain
-          llvm = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              clang
-              llvm
-              lld
-              lldb
-              cmake
-              ninja
-              nasm
-              yasm
-              
-              clang-tools  # clangd, clang-format, clang-tidy
-              asm-lsp
-              cmake-language-server
-              
-              # Static analysis
-              cppcheck
-              valgrind
-              bear
-            ];
+            cmake
+            ninja
+            pkg-config
 
-            shellHook = ''
-              echo "=== LLVM/Clang Toolchain ==="
-              echo "Clang: $(clang --version | head -n1)"
-              export CC=clang
-              export CXX=clang++
-              export LD=lld
-              echo "Environment configured for LLVM toolchain"
-            '';
-          };
+            valgrind
+            clang-tools
 
-          # Cross-compilation & Embedded
-          cross = pkgs.mkShell {
-            buildInputs = with pkgs; [
-              gcc
-              clang
-              gdb
-              lldb
-              cmake
-              gnumake
-              nasm
-              
-              # Cross-compilation & emulation
-              qemu
-              qemu_kvm
-              
-              # Binary analysis
-              binutils
-              elfutils
-              patchelf
-              
-              # Debugging & tracing
-              strace
-              ltrace
-              valgrind
-              
-              clang-tools
-              asm-lsp
-              cmake-language-server
-              
-              bear
-              xxd
-              hexdump
-            ];
+            lua5_1
+            luajitPackages.luarocks
+          ];
 
-            shellHook = ''
-              echo "=== Cross-compilation & Embedded ==="
-              echo "GCC: $(gcc --version | head -n1)"
-              echo "QEMU available at: ${pkgs.qemu}/bin"
-              echo "Ready for bare-metal and cross-platform development"
-              export QEMU_SYSTEM=${pkgs.qemu}/bin
-            '';
-          };
+          shellHook = ''
+            echo "=== Systems Lab (GNU + LLVM + Lua) ==="
+            echo "   GCC:   $(gcc --version | head -n1)"
+            echo "   Clang: $(clang --version | head -n1)"
+            echo "   Lua:   $(lua -v 2>&1 | head -n1)"
+            export CPATH="${pkgs.glibc.dev}/include:${pkgs.gcc.cc}/include"
+            export CPLUS_INCLUDE_PATH="${pkgs.gcc.cc}/include/c++/${pkgs.gcc.version}:${pkgs.glibc.dev}/include"
+            export LIBRARY_PATH="${pkgs.glibc}/lib:${pkgs.gcc.cc}/lib"
+          '';
         };
       }
     );
