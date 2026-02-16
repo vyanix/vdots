@@ -49,7 +49,7 @@ static const Rule rules[] = {
 	{ "kitty",                 NULL,   NULL,       1 << 0,       0,           -1 },
 	{ ".virt-manager-wrapped", NULL,   NULL,       1 << 1,       0,           -1 },
 	{ "pavucontrol",           NULL,   NULL,       0,            1,           -1 },
-	{ "qalculate-gtk",         NULL,   NULL,       0,            1,           -1 },
+	{ "Qalculate-gtk",         NULL,   NULL,       0,            1,           -1 },
 };
 
 /* layout(s) */
