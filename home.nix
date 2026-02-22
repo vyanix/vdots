@@ -48,6 +48,7 @@
     pavucontrol
     qalculate-gtk
     ripgrep
+    ungoogled-chromium
     unzip
     xclip
     xwallpaper
