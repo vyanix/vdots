@@ -54,10 +54,8 @@
       variant = "";
     };
   };
-  hardware = {
-    pulseaudio.enable = false;
-    alsa.enablePersistence = true;
-  };
+  services.pulseaudio.enable = false;
+  hardware.alsa.enablePersistence = true;
   services.pipewire.enable = false;
   security.rtkit.enable = false;
   fonts.packages = with pkgs; [
