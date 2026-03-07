@@ -37,16 +37,24 @@
   home.packages = with pkgs; [
     aria2
     bat
+    bash-language-server
     brave
     btop
     eza
     fd
     flameshot
     fzf
+    lua-language-server
+    luajitPackages.luacheck
     ncdu
+    nixd
+    nixfmt
     pavucontrol
     qalculate-gtk
     ripgrep
+    shfmt
+    stylua
+    tree-sitter
     unzip
     xclip
     xwallpaper

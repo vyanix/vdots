@@ -4,6 +4,9 @@
   programs.bash = {
     enable = true;
     enableCompletion = true;
+    sessionVariables = {
+      PATH = "$HOME/.local/bin:$PATH";
+    };
     initExtra = ''
       if [ -n "$DISPLAY" ] || [ -n "$WAYLAND_DISPLAY" ]; then
         eval "$(${pkgs.starship}/bin/starship init bash)"

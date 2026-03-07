@@ -24,7 +24,10 @@
 
             cmake
             ninja
+
             pkg-config
+	    gettext
+            ccache
 
             valgrind
             clang-tools
