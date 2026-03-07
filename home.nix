@@ -40,6 +40,7 @@
     bash-language-server
     brave
     btop
+    efm-langserver
     eza
     fd
     flameshot
