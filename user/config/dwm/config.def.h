@@ -2,6 +2,11 @@
 #include <X11/XF86keysym.h>
 /* appearance */
 static const unsigned int borderpx  = 3;        /* border pixel of windows */
+static const unsigned int barpadv   = 10;
+static const unsigned int barpadh   = 200;
+static const unsigned int barheight = 2;
+static const unsigned int barborder = 2;
+static const unsigned int floatbar  = 1;
 static const unsigned int snap      = 32;       /* snap pixel */
 static const unsigned int gappih    = 10;       /* horiz inner gap between windows */
 static const unsigned int gappiv    = 10;       /* vert inner gap between windows */
@@ -20,9 +25,11 @@ static const char col_border[]      = "#aeeeee";
 static const char col_sel_bg[]      = "#eaffff";
 static const char col_sel_fg[]      = "#000000";
 static const char col_bar_bg[]      = "#eaffff";
+static const char col_skin[]        = "#f5deb3";
 static const char *colors[][3]      = {
 	[SchemeNorm] = { col_fg,        col_bg,        col_border },
 	[SchemeSel]  = { col_sel_fg,    col_sel_bg,    col_border },
+	[SchemeBar]  = { NULL,          NULL,          NULL },
 };
 */
 
@@ -31,10 +38,12 @@ static const char col_fg[]          = "#cccccc";
 static const char col_muted[]       = "#7a7a7a";
 static const char col_border[]      = "#2a2a2a";
 static const char col_accent[]      = "#1bfd9c";
+static const char col_skin[]        = "#f5deb3";
 static const char *colors[][3]      = {
 	/*               fg             bg             border   */
 	[SchemeNorm] = { col_fg,    col_bg,            col_border },
-	[SchemeSel]  = { col_fg,    col_bg,            col_accent },
+	[SchemeSel]  = { col_bg,    col_skin,          col_skin },
+	[SchemeBar]  = { NULL,      NULL,              NULL },
 };
 
 /* tagging */
@@ -79,7 +88,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_border, "-sf", col_accent, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_skin, "-sb", col_skin, "-sf", col_bg, NULL };
 /* static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg, "-sb", col_sel_bg, "-sf", col_sel_fg, NULL }; */
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };

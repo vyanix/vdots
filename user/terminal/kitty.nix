@@ -13,12 +13,12 @@
       tab_bar_style = "powerline";
       background = "#101010";
       foreground = "#cccccc";
-      cursor = "#1bfd9c";
+      cursor = "#f5deb3";
       selection_background = "#282828";
       selection_foreground = "#dddddd";
       color0 = "#2a2a2a";
       color1 = "#deeeed";
-      color2 = "#1bfd9c";
+      color2 = "#f5deb4";
       color3 = "#b4b4b4";
       color4 = "#7a7a7a"; 
       color5 = "#66b2b2";

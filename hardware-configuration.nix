@@ -9,32 +9,27 @@
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "usbhid" "sd_mod" ];
-  boot.initrd.kernelModules = [ "dm-snapshot" "cryptd" ];
-  boot.initrd.luks.devices."cryptroot".device = "/dev/disk/by-label/NIXOS_LUKS";
+  boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-    { device = "/dev/disk/by-label/NIXOS_ROOT";
+    { device = "/dev/mapper/luks-b22da2f5-e52a-432d-9d20-8abf38b02beb";
       fsType = "ext4";
     };
 
+  boot.initrd.luks.devices."luks-b22da2f5-e52a-432d-9d20-8abf38b02beb".device = "/dev/disk/by-uuid/b22da2f5-e52a-432d-9d20-8abf38b02beb";
+
   fileSystems."/boot" =
-    { device = "/dev/disk/by-label/NIXOS_BOOT";
+    { device = "/dev/disk/by-uuid/354D-2010";
       fsType = "vfat";
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  fileSystems."/home" =
-    { device = "/dev/disk/by-label/NIXOS_HOME";
-      fsType = "ext4";
-    };
-
   swapDevices =
-    [ { device = "/dev/disk/by-label/NIXOS_SWAP"; }
+    [ { device = "/dev/mapper/luks-b0966ec1-8037-4b7f-b8ec-092bbf698747"; }
     ];
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  hardware.enableAllFirmware = true;
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }

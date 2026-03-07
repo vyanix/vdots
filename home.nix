@@ -6,7 +6,6 @@
     ./user/shell/starship.nix
     ./user/terminal/kitty.nix
     ./user/terminal/fastfetch.nix
-    ./user/editors/neovim/neovim.nix
     ./user/suckless/suckless.nix
     ./user/compositor/picom.nix
   ];
@@ -38,6 +37,7 @@
   home.packages = with pkgs; [
     aria2
     bat
+    brave
     btop
     eza
     fd
@@ -47,7 +47,6 @@
     pavucontrol
     qalculate-gtk
     ripgrep
-    ungoogled-chromium
     unzip
     xclip
     xwallpaper

@@ -3,306 +3,237 @@
 {
   programs.starship = {
     enable = true;
-    enableBashIntegration = false;
+    enableBashIntegration = true;
 
     settings = {
       "$schema" = "https://starship.rs/config-schema.json";
       add_newline = true;
 
+      # Primary Format String
       format = lib.concatStrings [
-        "╭"
-        "\\["
+	"╭"
+        "$os"
+        "$cmd_duration"
+        "$battery"
+        "$character"
+        "$status"
+        "$sudo"
+        "$line_break"
+        "$env_var"
         "$username"
         "$hostname"
-        "\\]"
+        "$localip"
         "$directory"
         "$git_branch"
         "$git_status"
-        "$cmd_duration"
-        "$fill"
-        "("
+        "$git_commit"
+        "$git_state"
+        "$git_metrics"
+        "$fossil_branch"
+        "$fossil_metrics"
+        "$hg_branch"
+        "$pijul_channel"
+        "$vcsh"
+        "$buf"
         "$bun"
         "$c"
-        "$cpp"
         "$cmake"
+        "$cobol"
+        "$conda"
+        "$crystal"
+        "$daml"
         "$dart"
+        "$deno"
         "$dotnet"
+        "$elixir"
+        "$elm"
+        "$erlang"
+        "$fennel"
+        "$fortran"
+        "$gleam"
         "$golang"
         "$gradle"
+        "$haxe"
+        "$helm"
+        "$haskell"
         "$java"
+        "$julia"
         "$kotlin"
         "$lua"
+        "$meson"
+        "$mise"
+        "$mojo"
+        "$nats"
+        "$nim"
+        "$nix_shell"
         "$nodejs"
+        "$ocaml"
+        "$odin"
+        "$opa"
         "$package"
+        "$perl"
         "$php"
+        "$pulumi"
+        "$purescript"
         "$python"
+        "$quarto"
+        "$raku"
+        "$red"
         "$rlang"
         "$ruby"
-        "$rust"
         "$scala"
-        "-)"
-        "$container"
-        "$os"
-        "$battery"
+        "$rust"
+        "$spack"
+        "$swift"
+        "$terraform"
+        "$typst"
+        "$vagrant"
+        "$vlang"
+        "$xmake"
+        "$zig"
+        "$aws"
+        "$azure"
+        "$docker_context"
+        "$gcloud"
+        "$guix_shell"
+        "$kubernetes"
+        "$openstack"
+        "$pixi"
+        "$singularity"
         "$time"
-        "$line_break"
-        "╰"
-        "$character"
+        "$shlvl"
+        "$jobs"
+        "$shell"
+	"$line_break"
+	"╰> "
       ];
 
-      character = {
-        success_symbol = "[>](bold green)";
-        error_symbol = "[>](bold red)";
+      # Palettes
+      palette = "light";
+      palettes.light = {
+        success_fg = "green";
+        error_fg = "red";
+        fg_1 = "black";
+        bg_1 = "white";
+      };
+      palettes.dark = {
+        success_fg = "green";
+        error_fg = "red";
+        fg_1 = "brightwhite";
+        bg_1 = "darkblack";
+      };
+
+      line_break.disabled = true;
+
+      os = {
+        disabled = false;
+        style = "fg:fg_1 bg:bg_1";
+        format = "[ $symbol ]($style)";
+        symbols = {
+          Alpine = " ";
+          Arch = " ";
+          Debian = " ";
+          Fedora = " ";
+          Gentoo = " ";
+          Linux = " ";
+          Macos = " ";
+          NixOS = " ";
+          Ubuntu = " ";
+          Windows = " ";
+          # Add others from your list as needed
+        };
+      };
+
+      battery = {
+        disabled = false;
+        full_symbol = "󰂃 ";
+        charging_symbol = "⚡️ ";
+        discharging_symbol = "󰁽 ";
+        empty_symbol = "󰂎 ";
+        format = "[ $symbol$percentage ]($style)";
+        display = [
+          { threshold = 100; style = "fg:fg_1 bg:bg_1"; }
+        ];
       };
 
       cmd_duration = {
-        min_time = 0;
-        format = "\\( [$duration]($style)\\)";
+        format = "[ $duration ]($style)";
+        style = "fg:fg_1 bg:bg_1";
+      };
+
+      character = {
+        success_symbol = "[](fg:success_fg bg:bg_1)";
+        error_symbol = "[✘](fg:error_fg bg:bg_1)";
+        format = "[ $symbol ](fg:fg_1 bg:bg_1)";
+      };
+
+      status = {
+        disabled = false;
+        format = "[$status:$common_meaning ](fg:error_fg bg:bg_1)";
+      };
+
+      sudo = {
+        disabled = false;
+        symbol = "🔑";
+        style = "fg:fg_1 bg:bg_1";
+        format = "[ $symbol ]($style)";
       };
 
       username = {
         show_always = true;
-        format = "[$user]($style)";
-      };
-
-      hostname = {
-        format = "@[$hostname$ssh_symbol]($style)";
-        ssh_symbol = "";
+        style_user = "fg:fg_1 bg:bg_1";
+        style_root = "fg:fg_1 bold bg:bg_1";
+        format = "[  ($user) ]($style)";
       };
 
       directory = {
-        format = "\\[[$path]($style)[($read_only)]($read_only_style)\\]";
-        read_only = "!";
+        style = "fg:fg_1 bg:bg_1";
+        format = "[ $read_only$path ]($style)";
+        read_only = "󰌾 ";
+        truncation_length = 3;
+        truncation_symbol = "…/";
+        home_symbol = " ";
         substitutions = {
           "Documents" = "󰈙 ";
           "Downloads" = " ";
           "Music" = " ";
           "Pictures" = " ";
-          "Projects" = "󰌵 ";
+          ".config" = "";
+          "Rust" = " ";
         };
       };
 
       git_branch = {
-        format = "\\([$symbol$branch(:$remote_branch)]($style)\\)";
-        symbol = " ";
+        symbol = "";
+        style = "fg:fg_1 bg:bg_1";
+        format = "[ $symbol $branch ]($style)";
       };
 
       git_status = {
-        format = "([\\($all_status$ahead_behind\\)]($style))";
+        style = "fg:fg_1 bg:bg_1";
+        format = "[ $all_status$ahead_behind ]($style)";
+        up_to_date = "✓";
       };
 
-      fill = {
-        symbol = "─";
-      };
-
-      bun = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      c = {
-        format = "\\([$symbol($name:)$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      cpp = {
-        format = "\\([$symbol($name:)$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      cmake = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      dart = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      dotnet = {
-        format = "\\([$symbol$version(:$tfm)]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      golang = {
-        format = "\\([$symbol$version(<$mod_version)]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      gradle = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      java = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      kotlin = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      lua = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      nodejs = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      package = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      php = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      python = {
-        format = "\\([$symbol$pyenv_prefix$version(\\($virtualenv\\))]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      rlang = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      ruby = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      rust = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      scala = {
-        format = "\\([$symbol$version]($style)\\)";
-        symbol = " ";
-        version_format = "\${raw}";
-      };
-
-      container = {
-        format = "\\([$symbol$name]($style)\\)";
-        symbol = " ";
-      };
-
-      os = {
-        disabled = false;
-        format = "\\[[$symbol$type]($style)\\]";
-        symbols = {
-          AIX = " ";
-          Alpaquita = " ";
-          Alpine = " ";
-          AlmaLinux = " ";
-          Amazon = " ";
-          Android = " ";
-          Arch = " ";
-          Artix = " ";
-          CachyOS = " ";
-          CentOS = " ";
-          Debian = " ";
-          DragonFly = " ";
-          Emscripten = " ";
-          EndeavourOS = " ";
-          Fedora = " ";
-          FreeBSD = " ";
-          Garuda = " ";
-          Gentoo = " ";
-          HardenedBSD = " ";
-          Illumos = " ";
-          Kali = " ";
-          Linux = " ";
-          Mabox = " ";
-          Macos = " ";
-          Manjaro = " ";
-          Mariner = " ";
-          MidnightBSD = " ";
-          Mint = " ";
-          NetBSD = " ";
-          Nobara = " ";
-          NixOS = " ";
-          OpenBSD = " ";
-          OpenCloudOS = " ";
-          openEuler = " ";
-          openSUSE = " ";
-          OracleLinux = "󰌷 ";
-          Pop = " ";
-          Raspbian = " ";
-          Redhat = " ";
-          RedHatEnterprise = " ";
-          RockyLinux = " ";
-          Redox = "󰀘 ";
-          Solus = "󰠳 ";
-          SUSE = " ";
-          Ubuntu = " ";
-          Ultramarine = " ";
-          Unknown = " ";
-          Uos = " ";
-          Void = " ";
-          Windows = " ";
-        };
-      };
-
-      battery = {
-        format = "\\[[$symbol$percentage]($style)\\]";
-        full_symbol = " ";
-        charging_symbol = " ";
-        discharging_symbol = " ";
-        unknown_symbol = " ";
-        empty_symbol = " ";
-        display = [
-          {
-            threshold = 20;
-            style = "bold red";
-            charging_symbol = " ";
-            discharging_symbol = " ";
-          }
-          {
-            threshold = 50;
-            style = "bold orange";
-            charging_symbol = " ";
-            discharging_symbol = " ";
-          }
-          {
-            threshold = 90;
-            style = "bold green";
-            charging_symbol = " ";
-            discharging_symbol = " ";
-          }
-        ];
-      };
+      # Toolchains (Simplified mapping - repeat for all languages)
+      rust = { symbol = ""; style = "fg:fg_1 bg:bg_1"; format = "[ $symbol $version ]($style)"; };
+      c = { symbol = " "; style = "fg:fg_1 bg:bg_1"; format = "[ $symbol $version ]($style)"; };
+      lua = { symbol = " "; style = "fg:fg_1 bg:bg_1"; format = "[ $symbol $version ]($style)"; };
+      nodejs = { symbol = "󰎙 "; style = "fg:fg_1 bg:bg_1"; format = "[ $symbol $version ]($style)"; };
+      nix_shell = { symbol = " "; style = "fg:fg_1 bg:bg_1"; format = "[ $symbol $version ]($style)"; };
 
       time = {
         disabled = false;
-        format = "\\[ [$time]($style)\\]";
+        style = "fg:fg_1 bg:bg_1";
+        format = "[  $time ]($style)";
+      };
+
+      shell = {
+        disabled = false;
+        zsh_indicator = "󰰶";
+        bash_indicator = "";
+        style = "fg:fg_1 bg:bg_1";
+        format = "[ $indicator ]($style)";
       };
     };
   };
