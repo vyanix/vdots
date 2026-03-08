@@ -60,7 +60,6 @@
   security.rtkit.enable = false;
   fonts.packages = with pkgs; [
     nerd-fonts.space-mono
-    nerd-fonts.lilex
   ];
 
   # User.
