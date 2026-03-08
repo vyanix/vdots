@@ -10,7 +10,7 @@ Minimal, reproducible, and developer-focused.
 **WM**: dwm (X11)  
 **Shell**: Bash  
 **Term**: kitty  
-**Editor**: Neovim / Emacs
+**Editor**: Neovim
 
 #### Notes
 These configs are tailored for my hardware and workflow. Use at your own risk. Expect breaking changes.
