@@ -1995,7 +1995,7 @@ updatebarpos(Monitor *m)
         m->wh = m->mh - (barheight + bh + barpadv * 2 + barborder); 	/* Reduce window height to account for bar */
         m->by = barpadv; 												/* Position bar at vertical padding from top */
       } else {
-        m->by = -bh - barheight;
+        m->by = -bh - barheight - barborder * 2;
       }
     } else {
         m->wy = m->my;
@@ -2005,7 +2005,7 @@ updatebarpos(Monitor *m)
             m->by = m->topbar ? m->wy : m->wy + m->wh;
             m->wy = m->topbar ? m->wy + bh : m->wy;
         } else
-            m->by = -bh - barheight;
+            m->by = -bh - barheight - barborder * 2;
     }
 }
 
