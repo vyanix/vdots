@@ -35,6 +35,7 @@
     };
   };
   home.packages = with pkgs; [
+    arandr
     aria2
     bat
     bash-language-server
