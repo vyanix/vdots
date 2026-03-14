@@ -29,8 +29,7 @@
 	    gettext
             ccache
 	    ncurses
-            libx11
-	    libxft
+            libxt
 
             valgrind
             clang-tools
