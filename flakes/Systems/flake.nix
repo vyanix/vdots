@@ -26,8 +26,10 @@
             ninja
 
             pkg-config
-	          gettext
+	    gettext
             ccache
+	    ncurses
+            xorg.libX11
 
             valgrind
             clang-tools
